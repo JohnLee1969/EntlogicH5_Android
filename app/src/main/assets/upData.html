@@ -1,0 +1,166 @@
+<!DOCTYPE html>
+<head>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8"/>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, minimum-scale=1.0, maximum-scale=1.0, user-scalable=no" />
+    <script type="text/javascript" src="js/JYSM_Util.js?v=0.3" charset="UTF-8"></script>
+
+    <title>home</title>
+    <script>
+       // alert("local load ok!");
+    </script>
+    <link href="css/css.css" rel="stylesheet" />
+</head>
+<body>
+<div class="wap_index_bg" id="b_bg">
+   空的一个页面 updata
+    <input type="file" capture="camera" accept="image/*" />
+
+    <div id="pnlVideo1">
+        <input type="hidden" name="imgNric1" id="imgNric1" />
+        <label id="nric" class="control-label labelfont" style="color:#888;font-weight:bold;">Picture of Asset</label><br /><br />
+        <button id="btnOpen1" class="btn btn-default" type="button">Open WebCam</button>
+        <select id="videoSource" style="display:none">
+
+        </select>
+        <div id="vdoOne" style="display:none;">
+            <video id="video" style="margin-top:15px;margin-bottom:15px;" width="300" autoplay></video>
+            <canvas id="canvasPreview" style="margin-top:15px;" width="300" height="224"></canvas>
+            <canvas id="canvasUpload" style="display:none;" width='300' height='224'></canvas>
+            <button id="snap" class="btn btn-default" type="button">Snap Photo</button>
+        </div>
+    </div>
+
+
+
+
+
+
+
+
+    <script type="text/javascript">
+
+    //// Elements for taking the snapshot
+    var canvasPreview = document.getElementById('canvasPreview');
+    var canvasUpload = document.getElementById('canvasUpload');
+    var contextPreview = canvasPreview.getContext('2d');
+    var contextUpload = canvasUpload.getContext('2d');
+
+    //#################### Video Source #######################
+    var videoElement = document.querySelector('video');
+    var videoSelect = document.querySelector('select#videoSource');
+
+
+    navigator.mediaDevices.enumerateDevices()
+      .then(gotDevices).then(getStream).catch(handleError);
+
+
+    videoSelect.onchange = getStream;
+
+
+    function gotDevices(deviceInfos) {
+      for (var i = 0; i !== deviceInfos.length; ++i) {
+        var deviceInfo = deviceInfos[i];
+        var option = document.createElement('option');
+        option.value = deviceInfo.deviceId;
+        if (deviceInfo.kind === 'videoinput') {
+          option.text = deviceInfo.label || 'camera ' +
+            (videoSelect.length + 1);
+          videoSelect.appendChild(option);
+        } else {
+          console.log('Found ome other kind of source/device: ', deviceInfo);
+            alert("Found ome other kind of source/device: :"+deviceInfo);
+        }
+      }
+    }
+
+
+    function getStream() {
+      if (window.stream) {
+        window.stream.getTracks().forEach(function (track) {
+          track.stop();
+        });
+      }
+
+
+      var constraints = {
+
+        video: {
+          optional: [{
+            sourceId: videoSelect.value
+          }]
+        }
+      };
+
+
+      navigator.mediaDevices.getUserMedia(constraints).
+        then(gotStream).catch(handleError);
+    }
+
+
+    function gotStream(stream) {
+      window.stream = stream; // make stream available to console
+      videoElement.srcObject = stream;
+    }
+
+
+    function handleError(error) {
+      console.log('Error: ', error);
+      alert("error:"+error);
+    }
+
+
+    //######################## End Video Source #################
+
+
+
+
+    // Get access to the camera!
+    if (navigator.mediaDevices && navigator.mediaDevices.getUserMedia) {
+      navigator.mediaDevices.getUserMedia({ video: true }).then(function (stream) {
+        videoElement.src = window.URL.createObjectURL(stream);
+        videoElement.play();
+
+
+      });
+    }
+    else {
+      document.getElementById("pnlVideo1").style.display = "none";
+    }
+
+
+    //// Trigger photo take
+    document.getElementById("snap").addEventListener("click", function () {
+      contextPreview.drawImage(videoElement, 0, 0, 300, 224);
+      contextUpload.drawImage(videoElement, 0, 0, 300, 224);
+      document.getElementById("video").style.display = "none";
+      document.getElementById("snap").style.display = "none";
+      document.getElementById("canvasPreview").style.display = "block";
+
+
+      var image = document.getElementById("canvasUpload").toDataURL("image/jpeg");
+      image = image.replace('data:image/jpeg;base64,', '');
+      //$("#imgNric1").val(image);
+    });
+
+
+    //// Trigger photo take
+
+
+
+
+    document.getElementById("btnOpen1").addEventListener("click", function () {
+      document.getElementById("vdoOne").style.display = "block";
+      document.getElementById("video").style.display = "block";
+      document.getElementById("snap").style.display = "block";
+      document.getElementById("canvasPreview").style.display = "none";
+    });
+
+
+
+
+</script>
+</div>
+
+</body>
+
+</html>

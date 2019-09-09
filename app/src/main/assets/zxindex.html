@@ -1,0 +1,188 @@
+<!DOCTYPE html>
+<head>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8"/>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, minimum-scale=1.0, maximum-scale=1.0, user-scalable=no" />
+    <script type="text/javascript" src="js/JYSM_Util.js?v=0.3" charset="UTF-8"></script>
+    <script type="text/javascript" src="js/JYSM_Alert.js?v=0.3" charset="UTF-8"></script>
+    <script type="text/javascript" src="js/camera.js?v=0.3" charset="UTF-8"></script>
+
+    <title>home</title>
+    <script type="text/javascript">
+            JYSM.addScriptInHead("js/SYS_NAV_STYLE_B_js.js?r=" + Math.random(), function () {
+                //getUserID();//检查登录
+                GetSYS_NAV_STYLE_B_CSSTEXT();
+
+               // GetSYS_CSSTEXTByCode("wap");
+            });
+        window.onload=function(){
+          //JYSM.alert.alertOK("<p style='text-align:center;font-size:16pt;color:#f00;'>打开相机！</p>");
+          //OpenVideo("video_box");
+          //var _btn_openCam = document.getElementById("btn_openCam");
+          //_btn_openCam.onclick=function(){
+          //  OpenVideo("video_box");
+         // }
+
+          var devType = MobileType();
+          debugInfo('  MobileType ='+devType.mobileType);
+
+        }
+
+    </script>
+
+    <script>
+    var REQUEST_CODE_SCAN = 1;//扫一扫
+    var REQUEST_CODE_PHOTO =2;//暂保留
+    var REQUEST_SLT_PHOTO = 3;//选择相片
+    var REQUEST_CAP_PHOTO = 4;//拍照
+    var REQUEST_DEV_CODE = 8;//机器码
+    var REQUEST_TAKEVIDEO = 11;//录像
+
+    function openCam(){
+      window.jysmApp_and.goAppCamera();
+    }
+    function sltImg(){
+      window.jysmApp_and.goSltPhoto();
+    }
+    function scanCode(){
+      window.jysmApp_and.goScanCode();
+    }
+    function Tel(phoneNum){
+      window.jysmApp_and.goTel(phoneNum);
+    }
+    function getDevID(){
+      window.jysmApp_and.goDevID();
+    }
+    function takeVideoCam(){
+      window.jysmApp_and.goAppTakeVideo();
+    }
+
+    function jysmAppResult(res,flag){
+        if(flag==REQUEST_SLT_PHOTO || flag==REQUEST_CAP_PHOTO){
+          var _imgObj = document.getElementById('resultImg');
+          //JYSM.alert.alertOK(res);
+          _imgObj.src=res;
+        }
+        else if(flag==REQUEST_CODE_SCAN){
+          var resInfo = document.getElementById('resInfo');
+          resInfo.innerHTML ="扫码结果："+ res;
+          //JYSM.alert.alertOK("<p style='text-align:center;font-size:16pt;color:#f00;'>扫码！"+res+"</p>");
+        }else if(flag==REQUEST_DEV_CODE){
+          var resInfo = document.getElementById('resInfo');
+          resInfo.innerHTML ="机器唯一码："+ res;
+        }else if(flag==REQUEST_TAKEVIDEO ){
+          var video = document.getElementById('video');
+          video.src=res;
+          video.play();
+          var resInfo = document.getElementById('resInfo');
+          resInfo.innerHTML ="录像文件："+ res;
+          sendXHR(res);
+        }else{
+          var resInfo = document.getElementById('resInfo');
+          resInfo.innerHTML ="data："+ res;
+        }
+    }
+
+
+function debugInfo(s){
+    document.getElementById("resInfo").innerHTML += s;
+}
+
+function sendXHR(src){
+    debugInfo('sendXHR');
+ try{
+   //Envia bien blob, no interpretado
+   var xhr = new XMLHttpRequest();
+   if(xhr){
+       debugInfo("has xhr");
+   //var video=document.getElementById("video");
+   xhr.open('GET', src , true);
+   debugInfo(" src="+ src);
+   xhr.responseType = 'blob'; // blob
+   xhr.onerror = function(e){ debugInfo('onerror'+e);};
+   xhr.onload = function(e) {
+       debugInfo('onload--'+this.status);
+       if (this.status == 0) {//本地文件成功是 0
+           debugInfo('status 0');
+           // Note: .response instead of .responseText
+           var blob = new Blob([this.response], {type: 'video/mp4'});
+           debugInfo('size:'+blob.size/1024 +'kb----type:');
+           debugInfo(blob.type);
+           //form = new FormData(),
+           //request = new XMLHttpRequest();
+           //form.append("myblob",blob,"Capture.webm");
+           //form.append("myname",$("#name_test").value);
+           //request.open("POST","./UploadServlet",true);
+           //request.send(form);
+       }
+   };
+     xhr.send();
+   }
+   else{
+     debugInfo("no xhr");
+   }
+ }
+ catch(err){
+     debugInfo('  sendXHR error--'+err);
+ }
+}
+
+function IsPC() {
+        var userAgentInfo = navigator.userAgent;
+        var Agents = ["Android", "iPhone",
+                    "SymbianOS", "Windows Phone",
+                    "iPad", "iPod"];
+        var flag = true;
+        for (var v = 0; v < Agents.length; v++) {
+            if (userAgentInfo.indexOf(Agents[v]) > 0) {
+                flag = false;
+                break;
+            }
+        }
+        return flag;
+    }
+
+function MobileType(){
+    var u = navigator.userAgent;
+    if (u.indexOf('Android') > -1 || u.indexOf('Linux') > -1) {
+        //安卓手机
+        return {"mobileType":"android"};
+    } else if (u.indexOf('iPhone') > -1) {
+        //苹果手机
+        return {"mobileType":"iPhone"};
+    } else if (u.indexOf('iPad') > -1) {
+        //苹果手机
+        return {"mobileType":"iPad"};
+    } else if (u.indexOf('Windows Phone') > -1) {
+        //winphone手机
+        return {"mobileType":"Windows Phone"};
+    }else{
+        return {"mobileType":"pc"};
+    }
+}
+
+</script>
+    <link href="css/css.css" rel="stylesheet" />
+</head>
+<body>
+<div class="wap_index_bg" id="b_bg">
+    <h1 style="width:100%;height:40px;color:#000;">调用native DEMO</h1>
+    <input type="date" value="2019-07-29" style="width:100%;"/>
+    <input type="button" class="btn_wap" value="拍照" style="width:99%;height:35px;margin:2px 0;" onclick="openCam()"/>
+    <input type="button" class="btn_wap" value="选择照片" style="width:99%;height:35px;margin:2px 0;"  onclick="sltImg()"/>
+    <input type="button" class="btn_wap" value="录像" style="width:99%;height:35px;margin:2px 0;"  onclick="takeVideoCam()"/>
+    <input type="button" class="btn_wap" value="扫一扫" style="width:99%;height:35px;margin:2px 0;"  onclick="scanCode()"/>
+    <input type="button" class="btn_wap" value="打电话给13617715060" style="width:99%;height:35px;margin:2px 0;"  onclick="Tel('13617715060')"/>
+    <input type="button" class="btn_wap" value="获取机器码" style="width:99%;height:35px;margin:2px 0;"  onclick="getDevID()"/>
+    <a href="jysm://jzcloud/local?m=devid" style="display:block; width:99%;height:35px;margin:2px 0;text-align:center;background:#666;color:#fff;">机器码</a>
+    <h2 id="resInfo" style="width:100%;margin:4px;background-color:#ddd;">99999</h2>
+    <img id="resultImg" src="" style="width:99%;height:auto;"/>
+
+    <video id="video" style="width:100%;" src="/storage/emulated/0/video_2019_08_02_13_54_33.mp4" controls="controls" autoplay="autoplay">
+        您的浏览器不支持 video 标签。
+    </video>
+
+</div>
+
+</body>
+
+</html>

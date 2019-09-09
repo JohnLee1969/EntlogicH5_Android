@@ -1,0 +1,86 @@
+﻿@media (min-width: 90px){html{ font-size:2.5px;}}
+@media (min-width: 180px){html{ font-size:5px;}}
+@media (min-width: 240px){html{ font-size:6.66px;}}
+@media (min-width: 270px){html{ font-size:7.5px;}}
+@media (min-width: 320px){html{ font-size:10px;}}
+@media (min-width: 360px){html{ font-size:12px;}}
+@media (min-width: 393px){html{ font-size:12.5px;}}
+@media (min-width: 480px){html{ font-size:13.33px;}}
+@media (min-width: 540px){html{ font-size:15px;}}
+@media (min-width: 720px){html{ font-size:20px;}}
+@media (min-width: 900px){html{ font-size:25px;}}
+@media (min-width: 1080px){html{ font-size:40px;}}
+@media (min-width: 1440px){html{ font-size:50px;}}
+
+
+*{ margin:0; padding:0; font-family:Arial,'微软雅黑'; list-style:none; font-weight:normal;transition:width 0.5s,
+height 0.5s,background 0.5s, transform 0.5s, border 0.5s, box-shadow 0.5s, opacity 0.5s, bottom 0.5s;}
+.tga2 li{ float:left; width:50%;}
+.tga3 li{ float:left; width:33.33%;}
+.tga4 li{ float:left; width:25%;}
+.tga5 li{ float:left; width:20%;}
+.tga6 li{ float:left; width:16.66%;}
+.tga7 li{ float:left; width:14.28%;}
+.tga8 li{ float:left; width:12.5%;}
+
+/* 页脚导航 */
+footer{ position:fixed; height:4.4rem; background:#484646; left:0; bottom:0; width:100%; z-index:100; border-top:solid 0.1rem #333;}
+footer li{ text-align:center; font-size:0.9rem; line-height:1rem; }
+footer li a{ color:#fff; padding-top:3.0rem; display:block;}
+footer li img{ width:3rem; margin:0.7rem;}
+footer li.active a{ color:#00ffff;}
+
+footer li:nth-child(1){ background:url(images/ficon1.png) no-repeat center 0rem;background-size:3.0rem;}
+footer li:nth-child(2){ background:url(images/ficon2.png) no-repeat center 0rem;background-size:3.0rem;}
+footer li:nth-child(3){ background:url(images/logo_w.png) no-repeat center 0rem;background-size:3.0rem;}
+footer li:nth-child(4){ background:url(images/ficon3.png) no-repeat center 0rem;background-size:3.0rem;}
+footer li:nth-child(5){ background:url(images/ficon4.png) no-repeat center 0rem;background-size:3.0rem;}
+footer li.active:nth-child(1){ background:url(images/ficon1s.png) no-repeat center 0rem;background-size:3.0rem;}
+footer li.active:nth-child(2){ background:url(images/ficon2s.png) no-repeat center 0rem;background-size:3.0rem;}
+footer li.active:nth-child(3){ background:url(images/logo_r.png) no-repeat center 0rem;background-size:3.0rem;}
+footer li.active:nth-child(4){ background:url(images/ficon3s.png) no-repeat center 0rem;background-size:3.0rem;}
+footer li.active:nth-child(5){ background:url(images/ficon4s.png) no-repeat center 0rem;background-size:3.0rem;}
+
+.wap_index_nav {}
+.wap_index_nav li{ text-align:center; font-size:1.2rem; line-height:1rem;margin-top:0.5rem; }
+.wap_index_nav li a{ color:#666; padding-top:5.1rem; display:block;}
+.wap_index_nav li img{ width:4.0rem; margin:0.8rem;}
+.wap_index_nav li:nth-child(1){ background:url(../images/oicon9.png) no-repeat center 0.5rem;background-size:4.0rem;}
+.wap_index_nav li:nth-child(2){ background:url(../images/oicon9.png) no-repeat center 0.5rem;background-size:4.0rem;}
+.wap_index_nav li:nth-child(3){ background:url(../images/oicon9.png) no-repeat center 0.5rem;background-size:4.0rem;}
+.wap_index_nav li:nth-child(4){ background:url(../images/oicon9.png) no-repeat center 0.5rem;background-size:4.0rem;}
+.wap_index_nav li:nth-child(5){ background:url(../images/oicon9.png) no-repeat center 0.5rem;background-size:4.0rem;}
+.wap_index_nav li:nth-child(6){ background:url(../images/oicon9.png) no-repeat center 0.5rem;background-size:4.0rem;}
+.wap_index_nav li:nth-child(7){ background:url(../images/oicon9.png) no-repeat center 0.5rem;background-size:4.0rem;}
+.wap_index_nav li:nth-child(8){ background:url(../images/oicon9.png) no-repeat center 0.5rem;background-size:4.0rem;}
+.wap_index_nav li:nth-child(9){ background:url(../images/oicon9.png) no-repeat center 0.5rem;background-size:4.0rem;}
+.wap_index_nav li:nth-child(10){ background:url(../images/oicon9.png) no-repeat center 0.5rem;background-size:4.0rem;}
+.wap_index_nav li:nth-child(11){ background:url(../images/oicon9.png) no-repeat center 0.5rem;background-size:4.0rem;}
+.wap_index_nav li:nth-child(12){ background:url(../images/oicon9.png) no-repeat center 0.5rem;background-size:4.0rem;}
+
+.wap_index_list{margin-bottom:5rem;}
+.list1{}
+.list1 li a{color:#fff;display:block;width:94%;margin:3%;line-height:3.5rem;text-align:left; 
+            background:url(images/tree2.png) no-repeat right center;
+            border:1px solid #666;font-size:1.2rem;text-indent:1em;
+            -moz-border-radius: 5px;-webkit-border-radius: 5px;border-radius: 5px;
+}
+.wap_index_bg{
+    background-color:#aaa;
+    height:100%;
+}
+.wap_banner{
+    background-color:#aaa;
+    line-height:3.0rem;
+    text-align:center;
+    color:#fff;
+}
+.btn_wap{
+    width:94%;
+    margin:3%;
+    height:5rem;
+    background-color:#666;
+    -moz-border-radius: 5px;-webkit-border-radius: 5px;border-radius: 5px;
+    border:1px solid #666;
+    color:#fff;font-size:1.0rem;
+}

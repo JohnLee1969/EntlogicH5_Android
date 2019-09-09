@@ -1,0 +1,11 @@
+<resources>
+    <string name="app_name">广西家政云</string>
+    <string name="schemeName">jysm</string>
+    <string name="hostname">jzcloud</string>
+    <string name="baseRemoveUrl">https://jzy.jysmtech.com:7443</string>
+    <string name="localDebugUrl">http://192.168.0.102:1803/login.html</string>
+    <string name="localDebugUrl_lq">http://192.168.0.103:8080/EntlogicH5/moblie.jsp</string>
+    <string name="releaseUrl">https://jzy.jysmtech.com:9443/EntlogicH5/mobile.jsp</string>
+    <string name="baseLocalUrl">file:///android_asset/</string>
+    <string name="appcopyinfo">广西朵拉科技 版权所有</string>
+</resources>

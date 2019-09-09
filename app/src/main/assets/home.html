@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<head>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8"/>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, minimum-scale=1.0, maximum-scale=1.0, user-scalable=no" />
+    <script type="text/javascript" src="js/JYSM_Util.js?v=0.3" charset="UTF-8"></script>
+    <script type="text/javascript" src="js/JYSM_Alert.js?v=0.3" charset="UTF-8"></script>
+    <title>home</title>
+    <script type="text/javascript">
+            JYSM.addScriptInHead("js/SYS_NAV_STYLE_B_js.js?r=" + Math.random(), function () {
+                //getUserID();//检查登录
+                GetSYS_NAV_STYLE_B_CSSTEXT();
+
+               // GetSYS_CSSTEXTByCode("wap");
+            });
+
+        //JYSM.addScriptInHead("js/base64.js?r=" + Math.random());
+        window.onload=function(){
+          //JYSM.alert.alertOK("<p style='text-align:center;font-size:16pt;color:#f00;'>请输入用户名或密码！</p>");
+        }
+    </script>
+    <link href="css/css.css" rel="stylesheet" />
+</head>
+<body>
+<div class="wap_index_bg" id="b_bg">
+    <div class="wap_banner">家政云平台开发测试DEMO</div>
+
+    <div id="rdImgs" style="background: #eee; height: 200px; width:90%;margin:5%;">
+        <img src="images/videoimg.png" style="width:100%;"/>
+    </div>
+    <div class="wap_index_nav">
+        <ul class="tga3">
+            <li><a href="home.html">首页</a></li>
+            <li><a href="https://jzy.jysmtech.com:9443/EntlogicH5/mobile.jsp">家政云</a></li>
+            <li><a href="http://192.168.0.103:8080/EntlogicH5/mobile.jsp">本地家政云</a></li>
+            <li><a href="https://jzy.jysmtech.com:7443/camera.html">H5相机</a></li>
+            <li ><a href="jysm://jzcloud/local?m=scanqr">扫一扫测试</a></li>
+            <li ><a href="jysm://jzcloud/local?m=photo">调用相机</a></li>
+            <li><a href="index.html">获取位置</a></li>
+            <li><a href="zxindex.html">本地交互</a></li>
+            <li><a href="http://www.wggyq.gxhz.gov.cn/wap_index.html">手机网站</a></li>
+            <li ><a href="jysm://jzcloud/local?m=tel&telcode=13617715060">打电话</a></li>
+            <li ><a href="jysm://jzcloud/local?m=devid">机器码</a></li>
+        </ul>
+    </div>
+
+
+</div>
+
+</body>
+
+</html>
